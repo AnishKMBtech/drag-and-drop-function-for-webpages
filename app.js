@@ -1,44 +1,60 @@
-var dropArea = document.getElementById('drop-area');
-var fileElem = document.getElementById('fileElem');
-var fileSelectBtn = document.getElementById('fileSelectBtn');
-var fileList = document.getElementById('file-list');
+// selecting elements
+var dropArea      = document.getElementById('drop-area');
+var fileinput     = document.getElementById('fileinput');
+var selectbutton  = document.getElementById('selectbutton');
+var list          = document.getElementById('list');
 
-fileSelectBtn.onclick = function() {
-  fileElem.click();
+// open file picker
+selectbutton.onclick = function () {
+  fileinput.click();
 };
 
-dropArea.addEventListener('dragover', function(e) {
+// drag over effect
+dropArea.addEventListener('dragover', function (e) {
   e.preventDefault();
   dropArea.classList.add('dragover');
 });
-dropArea.addEventListener('dragleave', function() {
+
+// drag leave effect
+dropArea.addEventListener('dragleave', function () {
   dropArea.classList.remove('dragover');
 });
-dropArea.addEventListener('drop', function(e) {
+
+// drop files
+dropArea.addEventListener('drop', function (e) {
   e.preventDefault();
   dropArea.classList.remove('dragover');
-  handleFiles(e.dataTransfer.files);
-});
-fileElem.addEventListener('change', function() {
-  handleFiles(fileElem.files);
+  displayFiles(e.dataTransfer.files);
 });
 
-function handleFiles(files) {
+// file input selected
+fileinput.addEventListener('change', function () {
+  displayFiles(fileinput.files);
+});
+
+// display each file name with remove button
+function displayFiles(files) {
+  // Clear the list before displaying new files
+  list.innerHTML = "";
   for (var i = 0; i < files.length; i++) {
-    showFile(files[i]);
-  }
-}
+    (function(fileName) {
+      var item = document.createElement('div');
+      item.className = 'file-preview';
 
-function showFile(file) {
-  var preview = document.createElement('div');
-  preview.className = 'file-preview';
-  var info = document.createElement('span');
-  info.textContent = file.name + ' (' + Math.round(file.size/1024) + ' KB)';
-  preview.appendChild(info);
-  var removeBtn = document.createElement('button');
-  removeBtn.textContent = 'Remove';
-  removeBtn.className = 'remove-btn';
-  removeBtn.onclick = function() { preview.parentNode.removeChild(preview); };
-  preview.appendChild(removeBtn);
-  fileList.appendChild(preview);
+      var name = document.createElement('span');
+      name.textContent = fileName;
+
+      var remove = document.createElement('button');
+      remove.textContent = 'Remove';
+      remove.className = 'remove-btn';
+
+      remove.onclick = function () {
+        list.removeChild(item);
+      };
+
+      item.appendChild(name);
+      item.appendChild(remove);
+      list.appendChild(item);
+    })(files[i].name);
+  }
 }
