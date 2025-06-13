@@ -1,61 +1,56 @@
+/* Set up the body with centered flex layout and background */
 body {
-  font-family: Arial, sans-serif;
-  background: #f7f9fa;
+  font-family: sans-serif;
+  background: #f0f0f0;
   margin: 0;
-  padding: 0;
-  min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
+
+/* Style the main container */
 .container {
+  width: 100%;
   max-width: 400px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 24px 16px;
-}
-#drop-area {
-  border: 2px dashed #b3b3b3;
-  border-radius: 8px;
-  padding: 24px 8px;
+  background: white;
+  padding: 20px;
   text-align: center;
-  background: #f0f4f8;
-  transition: border-color 0.2s;
+  border: 1px solid #ccc;
 }
+
+/* Style the drag-and-drop area */
+#drop-area {
+  border: 2px dashed gray;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+/* Highlight drop area on dragover */
 #drop-area.dragover {
+  background: #e0f7ff;
   border-color: #0078d7;
-  background: #e6f7ff;
 }
-#file-list {
-  margin-top: 16px;
-  max-height: 180px;
-  overflow-y: auto;
-  background: #f8fafd;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  padding: 8px 0;
+
+/* List of uploaded files */
+#list {
+  margin-top: 15px;
 }
+
+/* Preview of each file */
 .file-preview {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   margin-bottom: 8px;
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-  padding: 4px 8px;
+  background: #f9f9f9;
+  padding: 6px;
 }
+
+/* Remove button for each file */
 .remove-btn {
-  margin-left: 12px;
-  background: #ff4d4f;
-  color: #fff;
+  background: red;
+  color: white;
   border: none;
-  border-radius: 4px;
-  padding: 2px 10px;
+  padding: 2px 6px;
   cursor: pointer;
-  font-size: 0.9em;
-  transition: background 0.2s;
-}
-.remove-btn:hover {
-  background: #d9363e;
 }
