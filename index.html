@@ -2,19 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drag and Drop File Uploader</title>
+  <title>Simple File Uploader</title>
+  
+  <!-- linking the css file  -->
   <link rel="stylesheet" href="styles.css">
+
+
 </head>
+
 <body>
+
+
   <div class="container">
-    <h2>Drag and drop your files here</h2>
-    <div id="drop-area">
-      <p>Drop files here or <button id="fileSelectBtn">Select Files</button></p>
-      <input type="file" id="fileElem" multiple style="display:none">
-      <div id="file-list"></div>
+    <h2>Simple Drag and Drop Project</h2>
+    <div                                 id="drop-area">
+      <p>  Drop files here or <button    id="selectbutton"  >        Select Files       </button></p>
+      <input type="file"                 id="fileinput"              multiple style="display: none;">
+      <div                               id="list"          >                                    </div>
+
+
     </div>
   </div>
-  <script src="app.js"></script>
+
+  <!-- linking the java script file -->
+  <script src="app.js">                    </script>
+
+
+
 </body>
 </html>
